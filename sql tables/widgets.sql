@@ -1,0 +1,23 @@
+CREATE TABLE `widgets` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `width` int DEFAULT NULL,
+  `height` int DEFAULT NULL,
+  `css_class` varchar(45) DEFAULT NULL,
+  `css_style` varchar(45) DEFAULT NULL,
+  `text` varchar(45) DEFAULT NULL,
+  `order` int DEFAULT NULL,
+  `page` int DEFAULT NULL,
+  `url` varchar(45) DEFAULT NULL,
+  `shareable` tinyint(1) DEFAULT NULL,
+  `expandable` tinyint(1) DEFAULT NULL,
+  `src` varchar(45) DEFAULT NULL,
+  `size` int DEFAULT NULL,
+  `html` varchar(45) DEFAULT NULL,
+  `DTYPE` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `widget_hasa_page_idx` (`page`),
+  KEY `widget_type_idx` (`DTYPE`),
+  CONSTRAINT `widget_hasa_page` FOREIGN KEY (`page`) REFERENCES `pages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `widget_type` FOREIGN KEY (`DTYPE`) REFERENCES `widget_types` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=679 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
